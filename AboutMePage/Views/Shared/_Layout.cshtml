@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Maciej Kolber - My Personal Website</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="~/onepagewonder/css/one-page-wonder.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/onepagewonder/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/MySheet.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="py-5 bg-black">
+        <div class="container">
+            <p class="m-0 text-center text-white small">&copy; Maciej Kolber 2020 - <a href="mailto:MaciejKolber98@gmail.com?subject=Kontakt"> Kontakt e-mail</a></p>
+        </div>
+    </footer>
+
+    <script src="~/onepagewonder/vendor/jquery/jquery.min.js"></script>
+    <script src="~/onepagewonder/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

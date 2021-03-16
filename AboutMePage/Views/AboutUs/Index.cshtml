@@ -1,0 +1,140 @@
+﻿@model IEnumerable<RssItem>
+
+<div class="container" id="navbar">
+    @*Navbar*@
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" data-aos="fade-down" style="position:fixed; border-radius:0;">
+            <div class="container" data-aos="fade-down">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#zainteresowania">Zainteresowania</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kanalrss">Newsy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#googleMap">Lokalizacja</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @*Karuzela*@
+    <div id="carousel-example-generic" style="width:70%; margin:auto;" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="@ViewBag.InstaPhotos.Data[0].Media_Url" alt="...">
+            </div>
+            <div class="item">
+                <img src="@ViewBag.InstaPhotos.Data[1].Media_Url" alt="...">
+            </div>
+            <div class="item">
+                <img src="@ViewBag.InstaPhotos.Data[3].Media_Url" alt="...">
+            </div>
+
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="width:50%;"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+
+
+    <hr />
+    <h1 style="text-align:center; padding:5px 0px 0px 5px;" id="zainteresowania"> Moje zainteresowania</h1>
+    <hr />
+
+    @*Zainteresowania*@
+    <div class="row" style="padding:5px 0px 5px 0px;">
+
+        <div class="col col-12 col-sm-12 col-xl-6 divInterests">
+            <p class="pInterests"> Terrarystyka</p>
+            <img class="img-fluid rounded-circle imgInterests" src="~/images/ballPython.jpg" alt="Pyton Królewski, taki wąż">
+        </div>
+
+        <div class="col col-12 col-sm-12 col-xl-6 divInterests">
+            <p class="pInterests"> Gry Wideo</p>
+            <img class="img-fluid rounded-circle imgInterests" src="~/images/gaming.png" alt="Zdjecie z wieloma grami">
+        </div>
+
+    </div>
+
+    <div class="row" style="padding:5px 0px 5px 0px;">
+
+        <div class="col col-12 col-sm-12 col-xl-6 divInterests">
+            <p class="pInterests"> Programowanie</p>
+            <img class="img-fluid rounded-circle imgInterests" src="~/images/code.jpg" alt="Programowanie!">
+        </div>
+
+        <div class="col col-12 col-sm-12 col-xl-6 divInterests">
+            <p class="pInterests"> Książki PostApo &amp; Fantasy</p>
+            <img class="img-fluid rounded-circle imgInterests" src="~/images/books.jpg" alt="Ksiazki">
+        </div>
+
+    </div>
+
+    <hr />
+    <h1 style="text-align:center; padding:5px 0px 0px 5px;" id="kanalrss"> Co w świecie?</h1>
+    <hr />
+
+    @*Rss*@
+    <div style="padding:25px 0px 25px 0px;">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col col-sm-12 col-xl-6 rssSpecialImg">
+                    <h3> @item.Title</h3>
+                    <a target="_blank" href="@item.Link"> Kliknij aby dowiedzieć się więcej! </a>
+                    <p class="rssSpecialP"> @Html.Raw(item.Description)  </p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <hr />
+    <h1 style="text-align:center; padding:5px 0px 0px 5px;"> Gdzie można mnie znaleźć</h1>
+    <hr />
+
+    @*Google Maps*@
+    <div style="height:500px;width:100%;" id="googleMap"></div>
+    <script>
+        function myMap() {
+            var iconBase = 'https://maps.google.com/mapfiles/kml/pal3/';
+            var myCenter = new google.maps.LatLng(49.8341767, 19.2373826);
+            var mapProp = { center: myCenter, zoom: 15, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.HYBRID };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                icon: iconBase + 'icon47.png'
+            });
+            marker.setMap(map);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=myMap"></script>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        AOS.init();
+        $("#myCarousel").carousel();
+    </script>
+}
