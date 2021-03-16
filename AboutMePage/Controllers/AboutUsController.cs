@@ -16,7 +16,7 @@ namespace AboutMePage.Controllers
         public async Task GetPhotosFromInstagramAsync()
         {
             var client = new HttpClient();
-            var path = "https://graph.instagram.com/me/media?fields=konserwaa,media_url&access_token=IGQVJYTlNvdWdsaTZAOVl9CRjVmZA2JrVmxNbldxWGJqd0NFN1lUVV8wNHFiSXNXclNEREp3U1YxOFFudFJxUEZACZAThidVZApbHRWbXRDNUFiVUNFQUc0cGJiWnVHWE9jdDJhSkEwYm9VSm1IUWUzYkp3WQZDZD";
+            var path = "https://graph.instagram.com/me/media?fields={INSERT YOUR INSTAGRAM ACC NAME HERE},media_url&access_token={INSERT ACCESS TOKEN HERE}";
             var response = await client.GetAsync(path);
 
             if (response.IsSuccessStatusCode)
